@@ -15,10 +15,10 @@ export class HelloComponent implements OnInit {
   ngOnInit() {
     console.log('Hello from Angular!');
     this.http
-      .get('https://spring-boot-azure-app-service.azurewebsites.net/hello')
-      .subscribe((response: any) => {
-        //console.log("Hello from Spring Boot: " + response.message);
-        this.message = response.message;
+      .get('https://spring-boot-azure-app-service.azurewebsites.net/hello', {responseType: 'text'})
+      .subscribe((response: string) => {
+        console.log("Hello from Spring Boot: " + response);
+        this.message = response;
       });
   }
 }
