@@ -16,9 +16,9 @@ export class HelloComponent implements OnInit {
     console.log('Hello from Angular!');
     this.http
       .get('https://spring-boot-azure-app-service.azurewebsites.net/hello')
-      .subscribe(data => {
-        console.log("Hello from Spring Boot: " + data);
-        this.message = data as string;
+      .subscribe((response: any) => {
+        //console.log("Hello from Spring Boot: " + response.message);
+        this.message = response.message;
       });
   }
 }
