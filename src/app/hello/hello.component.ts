@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HelloComponent implements OnInit {
 
+  message!: string;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -15,7 +17,8 @@ export class HelloComponent implements OnInit {
     this.http
       .get('https://spring-boot-azure-app-service.azurewebsites.net/hello')
       .subscribe(data => {
-        console.log('Hello from Spring Boot: ' + data);
+        console.log("Hello from Spring Boot: " + data);
+        this.message = data as string;
       });
   }
 }
